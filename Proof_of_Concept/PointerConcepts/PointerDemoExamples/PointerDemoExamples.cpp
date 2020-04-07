@@ -86,6 +86,7 @@ int main()									// Function tmain(...) begins program execution - Entry point
 
 	cout << "\n\n >>>>>>>>>>>>>>>>>>>>>>>>>>   Example Code  <<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 	cout << " 		 Pointer Arithmetic and Array Indexing				     " << endl;
+								// Notice add'g interger offsets to pointer adds correct number bytes (4) to the address
 	int numArry[6];				// Declare an integer type array of sizeof 6 with indexes [0] ... [5] = 4x6 -> 24 bytes
 	int* PtrNumArry;			// Declare a pointer that will subsequently point to the integer type array: numArry
 	PtrNumArry = numArry;       // Set pointer to the first element of the numArry
