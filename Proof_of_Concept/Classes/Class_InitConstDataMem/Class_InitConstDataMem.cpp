@@ -63,8 +63,8 @@ private:
 
 // .............. Definitions of class functions ( 'Increment', 'print' ) and declaration of function ( 'exitPrgm' )  ......
 Increment::Increment(int c, int i)					// Constructor taking parameters/ arguments
-	: count(c),										// initializer syntax for non-const member
-	increment(i)									// required initializer for const member     
+	: count(c), increment(i)						// initializer syntax for non-const member
+													// required initializer for const member     
 {
 	// Empty constuctor body 
 	// Above shows initializer syntax: Increment(int c, int i) : count(c), increment(i) { }

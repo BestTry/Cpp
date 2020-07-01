@@ -1,0 +1,2 @@
+I:\NuZorg\Software\SoftwareDevelopment\C++\Proof_of_Concept\Classes_Structs\Class\Class_ThisUsgCascadingFncs\Debug\Class_ThisUsgCascadingFncs.exe
+I:\NuZorg\Software\SoftwareDevelopment\C++\Proof_of_Concept\Classes_Structs\Class\Class_ThisUsgCascadingFncs\Debug\Class_ThisUsgCascadingFncs.pdb

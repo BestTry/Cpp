@@ -1,0 +1,2 @@
+I:\NuZorg\Software\SoftwareDevelopment\C++\Applications\Elevator_Simulator\Debug\Elevator_Simulator.exe
+I:\NuZorg\Software\SoftwareDevelopment\C++\Applications\Elevator_Simulator\Debug\Elevator_Simulator.pdb
