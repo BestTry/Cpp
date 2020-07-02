@@ -41,6 +41,7 @@ using std::setprecision;// setprecision(2)indicates a double variable value shou
 
 
 using namespace std;	// Common practice to implement the "std" namespace as it contains multiple supporting useful functions
+void displayFile();
 
 						// ##### Necessary for the 'GetConsoleWindow()' function below to work! - on Windows 2000 and later
 #define _win32_winnt 0x0500
@@ -69,7 +70,7 @@ int main()									// Function main() begins program execution - Entry point for
 	cout << "         Program Examples of Writing to, Reading from and Appending to files \n\n" << endl;
 	
 	cout << "\n\n Writing to a file with string type data: " << endl; 
-	ofstream output_file;						// Creates an output file object and opens the file 'names.txt' Creates file is non existent.
+	ofstream output_file;						// Creates output file object and opens file 'names.txt' - Creates file is non existent.
 	output_file.open("names.txt");				// Opens the stream file object 'output_file' If it does exist it deletes all data!
 												// The argument specifies the path for the file - Same folder as *.cpp is stored
 	output_file << "Everett\n";					// Write to stream
@@ -80,27 +81,40 @@ int main()									// Function main() begins program execution - Entry point for
 
 	output_file.close();						// Closes stream object and flushes all remaing data in buffer
 
-	cout << "\n\n Reading from the same file what data was previously written to it: " << endl;
+	cout << " Hit the enter key to continue"
+		 << " with program flow: " << endl;
+	cin.ignore();								// Wait for user to hit enter key and continue with program flow
+
+	cout << "\n Reading from the same file what data was previously written to it: " << endl;
 	ifstream input_file;						// Creates an input file ifstream object and opens the file 'names.txt' 
 	input_file.open("names.txt");				// Opens the stream file object 'input_file' in current directory 
 	if (input_file) {							// If extraction expression is 'true', It exist and its stream opened successfully . . .
 		string lineIn;
-		while (getline(input_file, lineIn)) {	// Read until there is no longer any data to read
-			cout << lineIn << '\n';				// Write line to console - Display contents of file 
+		while (getline(input_file, lineIn)) {	// Read until there is no longer any data (string 'lineIn') to read
+			cout << ' ' << lineIn << '\n';				// Write line to console - Display contents of file 
 		}
 		input_file.close();						// When not longer any data left .... close the file, Flushes the buffer and frees all resourses 
 	}
+
+	cout << " Hit the enter key to continue"
+		<< " with program flow: " << endl;
+	cin.ignore();								// Wait for user to hit enter key and continue with program flow
+
 												// Syntax for the open() member function of a file stream object
 												// object.open(file_name, file_access_flag [ | file_access_flag ] .... );
 												// The open() member function of the ofstream and fstream classes accepts 
 												// two arguments: First: file name to be opened, second: file access flag
 	// ofstream output_file; - redefinition		// Creates / Opens output files stream object
 	output_file.open("names.txt", ios::app);	// Open output file stream object in append mode  Then write/append to stream 
-	output_file << "Above are my grand children names as of April 2020\n" ;
+	output_file << "\n"							// Separate the list from the description of the list of names
+				<< "Above is the list of my \n"
+	            << "grand children's names \n"
+		        << "as of date April 2020" << endl;
 	output_file.close();						// Closes stream object and flushes all remaing data in buffer
 
-	cout << "\n\n Appending data to a file: " << " Look at the 'names.txt' file in the directory of *.cpp" << endl;
-
+	cout << "\n Appending data to a file: " << " Look at the 'names.txt' file in the directory of *.cpp" << endl;
+	cout << " The appended content of the file is also shown here below: \n" << endl;
+	displayFile();
 
 	//  >>>>>>  Using fstream  <<<<<< allows more flexibility -- May want to use it when changing from input to output for a stream
 	// Using fstream object for input and output:
@@ -130,6 +144,19 @@ void exitPrgm()
 	cout << "\n\n                  >>>>>>>>>>  Program has Terminated  <<<<<<<<<< " << endl;
 	cout << " \n\n\n " << endl;
 	exit(0);					// Terminate running program from anywhere it is called:
+}
+
+void displayFile()
+{
+	ifstream input_file;						// Creates an input file ifstream object and opens the file 'names.txt' 
+	input_file.open("names.txt");				// Opens the stream file object 'input_file' in current directory 
+	if (input_file) {							// If extraction expression is 'true', It exist and its stream opened successfully . . .
+		string lineIn;
+		while (getline(input_file, lineIn)) {	// Read until there is no longer any data (string 'lineIn') to read
+			cout << ' ' << lineIn << '\n';				// Write line to console - Display contents of file 
+		}
+		input_file.close();						// When not longer any data left .... close the file, Flushes the buffer and frees all resourses 
+	}
 }
 
 /*
