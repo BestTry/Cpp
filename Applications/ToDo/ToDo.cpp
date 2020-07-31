@@ -1,15 +1,12 @@
+// ToDo.cpp : 
 // todoTasks.cpp : 
 // Description of Program:
-// Code will generate a user input list of tasks.It will have the ability to add, removeand list tasks.Code will use some of the recently
-// assumated concepts I have been exposed to through either video lessons or tutorials.  As a minimum it will use file reading from and reading to disk file. 
+// Code will generate a user input list of tasks.It will have the ability to add, removeand list tasks.Code will use some of the recently assimulated
+// concepts I have been exposed to through either video lessons or tutorials.  As a minimum it will use file reading from and reading to disk file. 
 // The program will store its content in several vectors.  This code also represents a fair example of using the switch statement
 // ..........................................................................................
 //
-// Additonal Code Description : Steps Enumerated 
-// 1 - 
-// 2 - 
-// 3 - 
-// 4 - 
+//
 						// The Preprocessor Directives: (Header Files) - Symbol '#' indicates a preprocessing contents 						
 #include <iostream> 	// Standard Template Library class  -  Used for cout, cin, cerr, printf  ( That is the  reason for brackets < > )
 #include <iomanip>		// Required to utilize parameterized stream manipulator ie. calling setprecision(3) & fixed functions
@@ -21,7 +18,7 @@
 #include <array>		// Necessary when using the array class i.e array<arrType, size>
 #include <vector>		// Support vector operations - See inputDate
 #include <algorithm>	// Copy algorithm - Needed to utilize Standard Template Library functions
-						
+
 #include <limits>		// Contains clasees for defining numerical data type limits on each computer platform
 
 						// The double colons operator '::' is defined as the "Scope Resolution Operator"
@@ -43,38 +40,42 @@ void exitPrgm();							    // Use this function as a optional default to termina
 int main()										// Function main() begins program execution - Entry point for the program
 {
 
-	cout << "\n\n >>>>>>>>>>>>>>>>>>>>>>>>>>>>   TODO Task List   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
-	cout << "             ......................................................         \n\n" << endl;
+	cout << "\n\n >>>>>>>>>>>>>>>>>>>>>>>>>>>>   TODO Task List   <<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+	cout << "            ......................................................         \n\n" << endl;
 
 	int tskNum, index;
 	int priLvl;
 	string tskDefStr;
-	vector<int> tskPriVec;						// Vector contains the task priority 1 - 10
+	vector<int> tskPriVec;						// Vector contains the task priority: Highest to Lowest (1 - 5)
 	vector<string> tskDefVec;					// Vector contains the line descriptions of each task
 
 
-	string fileName = 	getFileName();			// Begin by getting the existing or new file name from the user
+	string fileName = getFileName();			// Begin by getting the existing or new file name from the user
 	string listTitle;
-	
+
 	ofstream outputFile;						// Create file output stream object using the 'fstream::ofstream' class for writing to files
 	ifstream inputFile;							// Create file input stream object using the 'fstream::ifstream class' for reading from files
+	
 												// First - populate vectors w/historical data, If file non existent prompt user to add data 
 	inputFile.open(fileName);					// Open an input file object having a name contained in variable 'fileName' 
 	if (inputFile) {							// Boolean test is file was opened successfully in previos statement
-		while ( (inputFile >> priLvl ) &&       // Assuming boolean test statement will be 'true' as long as there is data in the file to read 
-		( getline(inputFile, tskDefStr) ) )
+		while ((inputFile >> priLvl) &&         // Assuming boolean test statement will be 'true' as long as there is data in the file to read 
+			(getline(inputFile, tskDefStr)))
 		{										// Once the last item in the input file is read the test becomes false and fpriLvl drops from loop	
 			tskPriVec.push_back(priLvl);		// Take next item priority number and add it to end of 'tskPriVec vector array'
 			tskDefVec.push_back(tskDefStr);		// Take next item description string and add it to end of 'tskDefVec' vector array'
 		}
 		inputFile.close();						// End of data in file must have been reached - Close the file input stream object
-	}											
+	}
 	else {										// Either the file code not be found or there is no data in the file to be read
-		cout << "\n Unable to open this file: \n" 
-			 << " Recommend adding data item which creates a file with item \n" << endl;
+		cout << "\n Unable to open file after very first creation: \n"
+			 << " To correct - Recommend entering an item using the 'a' command.\n" 
+			 << " Next, save item with the 's' command  -  Entering a item first\n" 
+			 << " will allow file access and resolve any future opening issues. "
+			 << " \n" << endl;
 	}											// Adding items to the file will automatically create a new file with the name defined in fileName
 												// User has the option of addig items which will create a file 
-	
+
 												// ***** Central Program Continuous Command Loop *****
 	char command = 'c';                         // Initialize variable command to display user command options
 	while (command != 'z') {                    // Get command from user - Check for 'Terminate Program' - 'x' command
@@ -85,34 +86,35 @@ int main()										// Function main() begins program execution - Entry point fo
 
 		switch (command) {                      // Select and execute appropriate user command - Major portion of while loop
 		case 'v':
-			cout << "\n   ... >>>  To Do Task List  <<< ... \n"                
+			cout << "\n   ... >>>  To Do Task List  <<< ... \n"
 				<< left << setw(5) << " Task"	// Column definition format
-				<<left << setw(11) << "   Priority" << left << setw(19) << "   Task Description" << endl
+				<< left << setw(11) << "   Priority" << left << setw(19) << "   Task Description" << endl
 				<< " ----   --------   -----------------" << endl;
-			                           
+
 			cout << fixed << setprecision(0);	// Not necessart with integers but kept here for edification (Sets decimal places )
 			tskNum = 1;							// Continue thru loop til last vector elem is reached
-			for (int i = 0; i < tskPriVecSz; ++i) {  
+			for (int i = 0; i < tskPriVecSz; ++i) {
 				priLvl = tskPriVec[i];			// Pull priority (integer) of each task from the task piority vector array		
 				tskDefStr = tskDefVec[i];		// Pull definition (string) of each task from the task definition vector array	
-				cout << "  " << right <<  setw(2) << tskNum << setw(7) << "      " 
-					 << setw(2) << priLvl << setw(6) << "      " 
-					 << left << setw(74) << tskDefStr << '\n';
+				cout << "  " << right << setw(2) << tskNum << setw(7) << "      "
+					<< setw(2) << priLvl << setw(6) << "      "
+					<< left << setw(74) << tskDefStr << '\n';
 				++tskNum;
 			}
 			command = 'p';						// Finsh command with user command prompt
 			break;                              // Breaks out of switch block - Return to 'while' loop beginning
 
 												// TODO User input must be protected from type input error
-		case 'a':			
+		case 'a':
 			cout << "\n Enter a description of the task: " << endl;;
 			cin.ignore();						// Important! For 'getline' to work it must come before 'cin'
 			getline(cin, tskDefStr);			// Or before envoking it, use 'cin.ignore()' as was done here
 			cout << " Assign a priority level of the task that entered. \n"
-				 << " Enter 1 for the highest to 5 for the lowest priority. \n"
-				 << " Enter the priority level of the task: ";
+				<< " Enter 1 for the highest to 5 for the lowest priority. \n"
+				<< " Enter the priority level of the task: ";
 			cin >> priLvl;						// Check for erroneous entry: Interger range and type 
-			if ( ( (cin.fail()) || !((priLvl >= 1) && (priLvl <= 5) )) ) {
+
+			if (((cin.fail()) || !((priLvl >= 1) && (priLvl <= 5)))) {
 				cin.clear();					// Resets error bits to good state,  Disgard remaining data in stream
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				cout << " *** Invalid priority level entered - Please enter task again.\n";
@@ -127,14 +129,14 @@ int main()										// Function main() begins program execution - Entry point fo
 			}
 
 		case 'r':
-			cout << "Enter a task to remove: ";
-			cin >> tskNum; 
+			cout << " Enter a task to remove: ";
+			cin >> tskNum;
 			index = tskNum - 1;					// Element index is one less than task number displayed
 			if (index >= 0 && index < tskPriVecSz) {
 				tskDefVec.erase(tskDefVec.begin() + index);
 				tskPriVec.erase(tskPriVec.begin() + index);
 			}
-			cout << "Task number " << tskNum << " has been removed.\n";
+			cout << " Task number " << tskNum << " has been removed.\n";
 			command = 'p';						// Finsh command with user command prompt
 			break;								// Return to 'while' loop beginning
 
@@ -146,7 +148,7 @@ int main()										// Function main() begins program execution - Entry point fo
 				outputFile << priLvl << tskDefStr << '\n';
 			}
 			outputFile.close();
-			cout << "Your changes have been saved.\n";
+			cout << " Your changes have been saved.\n";
 			command = 'p';						// Finsh command display with user command prompt
 			break;                              // Breaks out of switch block - Return to 'while' loop beginning
 
@@ -156,14 +158,14 @@ int main()										// Function main() begins program execution - Entry point fo
 			break;								// Breaks out of switch block - Return to 'while' loop beginning
 
 		case 'p':								// Sollicite command input from user
-			cout << " Command: ";               // User Command prompt
+			cout << "\n Command: ";               // User Command prompt
 			cin >> command;						// Breaks out of switch block - Return to 'while' loop beginning
 			break;
 
 		case 'x':
-			cout << " Have your remembered to save your work? \n"				 
-				 << " If not, hit the 's' key to save your work \n"
-				 << " Otherwise, hit the 'x' key once again to exit\n";
+			cout << " Have your remembered to save your work? \n"
+				<< " If not, hit the 's' key to save your work \n"
+				<< " Otherwise, hit the 'x' key once again to exit\n";
 
 			char keyEntry;
 			cin >> keyEntry;
@@ -179,9 +181,10 @@ int main()										// Function main() begins program execution - Entry point fo
 
 		default:								// Any character besides thoughs specified in the switch block list 
 			cout << "Invalid command has been entered - Please enter command again.\n";
-			command = 'p';						// Finsh command display with user command prompt
+			displayCmds();						// Display legal list of commands once again
+			command = 'p';						// Finish command display with user command prompt
 			break;								// Breaks out of switch block - Return to 'while' loop beginning
-			
+
 		}
 	}
 
@@ -200,15 +203,15 @@ void exitPrgm()
 }
 
 string getFileName()
-{								
+{
 	string listFileName = "todoList";			// Default file name for file holding historical list items
-	cout << " Enter a file name that holds or will hold an item list " << endl;				
+	cout << " Enter a file name that holds or will hold an item list " << endl;
 	cout << " Enter name here ->>>  Default (todo): ";
 	getline(cin, listFileName);					// Acquire the file name for file I/O interfacing
-	if ( listFileName == "todo" || listFileName == "" ) {
-		listFileName = "todolist";
+	if (listFileName == "todo" || listFileName == "") {
+		listFileName = "todo";
 	}
-	else {							
+	else {
 		vector<char> flNameVec;					// Instantiate an empty vector of type character
 		int strLen = listFileName.length();		// Acquire user provide file name string length
 		int strIndx = 0;
@@ -232,18 +235,19 @@ string getFileName()
 	}
 
 	listFileName = listFileName + ".txt";
-	cout << " The file \"" << listFileName << "\" will be found in the project directory" << endl;
+	cout << " The file \"" << listFileName << "\" will be found in the folder\n"
+		<< " where the software program resides" << endl;
 	return listFileName;
 }
 
 void displayCmds() {
 	cout << "\n COMMANDS\n"
-		 << " v - View list items\n"
-		 << " a - Add item to list\n"
-		 << " r - Remove item from list\n"
-		 << " s - Save changes to list\n"
-		 << " c - Display command list\n"
-		 << " x - Exit program\n" << endl;
+		<< " v - View list of items\n"
+		<< " a - Add item to list\n"
+		<< " r - Remove item from list\n"
+		<< " s - Save changes to list\n"
+		<< " c - Display command list\n"
+		<< " x - Exit program" << endl;
 }
 
 
