@@ -15,19 +15,20 @@ class Person;								// Forward declaration
 class Floor {
 
 public:
-	Floor(int, Elevator&, BldgStat&);		// Constructor - Both of the arguments are references since they never change
+	Floor(int, Elevator&, BldgStat&);		// Constructor - Two arguments are references since they never change
 	~Floor();								// Destructor
 
-	bool isOccupied() const;				// Return true if floor occupied
-	int getNumber() const;					// Return floor's number
+	bool isOccupied() const;				// Returns boolean true if floor occupied
+	int getNumber() const;					// Returns floor's number
 
-	void personArrives(Person* const);		// Pass a handle to new person coming on floor	
+	void personArrives(Person* const);		// Notify floor that person is leaving floor - Passing 'handles'	
 	Person* elevatorArrived();				// Notify floor that elevator has arrived	
-	void elevatorLeaving();					// Notify floor that elevator is leaving	
 	void personBoardingElevator();			// Notify floor that person is leaving floor
+	void elevatorLeaving();					// Notify floor that elevator is leaving	
+	
 		
 	static const int FLOOR1;				// Static constants representing floor numbers
-	static const int FLOOR2;				// Used in place of actual numbers for better comprehension
+	static const int FLOOR2;				// Used in place of integers for better comprehension
 
 	FloorButton floorButton;				// Public FloorButton object accessible to 
 											// any client code with access to a Floor

@@ -64,11 +64,11 @@ void Elevator::processTime(int time)                            // Give time to 
 void Elevator::processPossibleArrival()                         // When elevator is moving, determine if it should stop by 
 {                                                               // comparing the present building time to the arrival time
     if (currentBuildingClockTime == arrivalTime) {              // Check arrival time - if elevator arrived at destination floor 
-        currentFloor =                                          // Update current floor - Toggle floor number by knowing source of last floor 
+        currentFloor =                                          // Update current floor - Swap floor number by knowing source of last floor 
        (currentFloor == Floor::FLOOR1 ?
-        Floor::FLOOR2 : Floor::FLOOR1);                    
-        direction =                                             // Update direction - Toggle direction by knowing current floor arrived
-       (currentFloor == Floor::FLOOR1 ? UP : DOWN);
+        Floor::FLOOR2 : Floor::FLOOR1);                         // Swap floor number to alternate designation
+        direction =                                             // Update direction - Swap direction by checking current floor number
+       (currentFloor == Floor::FLOOR1 ? UP : DOWN);             // Swap elevator next future direction
 
         cout << " Elevator arrives on floor "
              << currentFloor << endl;
@@ -77,7 +77,7 @@ void Elevator::processPossibleArrival()                         // When elevator
         
         return;
     }                                                           // End if                                                                
-    cout << " Elevator is moving "                              // Elevator is still moving: Present time NOT EQUAL Arrival Time
+    cout << " Elevator is moving "                              // Elevator is still moving: Present time did NOT EQUAL Arrival Time
          << (direction == UP ? "up" : "down") << endl;          // End function processPossibleArrival
 }                                                               // ----------------------------------------------------
 
@@ -175,14 +175,14 @@ void Elevator::prepareToLeave(bool leaving)                     // Called by ele
 }                                                               // ----------------------------------------------------
 
 
-void Elevator::move()                                           // Travell to alternate floor
+void Elevator::move()                                           // Travel to alternate floor
 {
     moving = true;                                              // Change moving state to 'true' and schedule arrival time 
     arrivalTime = currentBuildingClockTime + ELEVATOR_TRAVEL_TIME;
     cout << " Elevator begins moving "
          << (direction == DOWN ? "down " : "up ")
          << "to floor "
-         << (direction == DOWN ? '1' : '2')                     // If direction is down it is going to floor 1, otherwise floor2         
+         << (direction == DOWN ? '1' : '2')                     // If direction is down, it is moving to floor 1, otherwise up to floor2         
          << " (arrives at time " << arrivalTime << ')'
          << endl;                                               // End function move
 }                                                               // ----------------------------------------------------

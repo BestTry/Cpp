@@ -20,7 +20,7 @@ using std::endl;
 
 // Constructor - with Member Initialization List syntax
 Scheduler::Scheduler(Floor& firstFloor, Floor& secondFloor, BldgStat& bldgStatHandle)  
-    : currentClockTime(0),                              // Object 'scheduler' instantiated with clock equal to zero seconds
+    : currentClockTime(0),                              // Object 'scheduler' instantiated with clock initialized to zero seconds
     floor1Ref(firstFloor),
     floor2Ref(secondFloor), 
     bldgStatRef(bldgStatHandle)
@@ -43,13 +43,13 @@ void Scheduler::scheduleTime(const Floor& floor)        // Random - Schedule per
     int floorNumber = floor.getNumber();                // Future time current time plus five to twenty additional seconds
     int arrivalTime = currentClockTime + (5 + rand() % 16);
                                                         // Random arrival time is generated from current time plus 5 to 20 click ticks
-    floorNumber == Floor::FLOOR1 ?                      // Current time is updated by building the function processTime() every clock tick
+    floorNumber == Floor::FLOOR1 ?                      // Current time is updated by building the function processTime() at every clock tick
         floor1ArrivalTime = arrivalTime :               // Arrival times refers to the time a person first appears on a floor
         floor2ArrivalTime = arrivalTime;
 
     cout << " Scheduler schedules next person for floor "
-        << floorNumber << " at time " << arrivalTime
-        << endl;                                        // End function scheduleTime
+         << floorNumber << " at time " << arrivalTime
+         << endl;                                       // End function scheduleTime
 }                                                       // ------------------------------                                          
 
 
@@ -57,12 +57,12 @@ void Scheduler::delayTime(const Floor& floor)           // Reschedule arrival on
 {                                                       
     int floorNumber = floor.getNumber();
 
-    int arrivalTime = (floorNumber == Floor::FLOOR1) ?
-        ++floor1ArrivalTime : ++floor2ArrivalTime;
+    int arrivalTime = (floorNumber == Floor::FLOOR1) ?  // Increment (delay) person arrival time on floor 
+        ++floor1ArrivalTime : ++floor2ArrivalTime;      // And thus next person creation time is delayed
 
     cout << " Scheduler delays next person arrival on floor "
-        << floorNumber << " until time " 
-        << arrivalTime << " ###!###!###!###" << endl;   // End function delayTime
+         << floorNumber << " until time " 
+         << arrivalTime << " ###!###!###!###" << endl;  // End function delayTime
 }                                                       // ------------------------------                                        
 
 
@@ -70,8 +70,8 @@ void Scheduler::processTime(int time)                   // Building updates sche
 {                                                       // Scheduler has current time to make decisions
     currentClockTime = time;                            // Record current / present time: Scheduler now has updated current clock time
                                                         // Scheduler needs this time in function 'scheduleTime()' shown above
-    handleArrivals(floor1Ref, currentClockTime);        // Handle arrivals on floor 1
-    handleArrivals(floor2Ref, currentClockTime);        // Handle arrivals on floor 2
+    handleArrivals(floor1Ref, currentClockTime);        // Handle person arrivals on to floor 1
+    handleArrivals(floor2Ref, currentClockTime);        // Handle person arrivals on to floor 2
                                                         // End function processTime
 }                                                       // -----------------------------
 
@@ -99,8 +99,8 @@ void Scheduler::handleArrivals(Floor& floor, int time)  // Handle arrivals for a
 
     if (arrivalTime == time) {
         if (floor.isOccupied()) {                       // Check if floor is occupied,
-            delayTime(floor);                           // Delay arrival by one second if person is waiting on floor
-        }
+            delayTime(floor);                           // Delay person arrival on floor by 1 if person is waiting on floor
+        }                                               // May only have on person waiting on floor at this time (version)
         else {                                          // Otherwise, if floor is not occupied,
             createNewPerson(floor);                     // Create new person at this 'arrivalTime' and no sooner
         }                                               // End inner if

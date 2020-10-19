@@ -20,7 +20,7 @@ public:
 	int getfloor1_OccupantID();
 	int getfloor2_OccupantID();
 	
-	void displayBldgStatus();				// Display all the parameters 
+	void displayBldgStatus();				// Display simulation parameters 
 
  private:
 	int passengerID;

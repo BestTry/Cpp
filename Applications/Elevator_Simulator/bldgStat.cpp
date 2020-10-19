@@ -14,20 +14,20 @@ using namespace std;
 using std::cout;
 using std::endl;
 
-BldgStat::BldgStat()									// Constructor - adopting the 'Initialization Member List' for display the builing status
+BldgStat::BldgStat()									// Constructor - Utilizing the'Initialization Member List' for displaying builing status
 	    : passengerID(0), floor1_Occupant(0),
 		  floor2_Occupant(0) 
 {
 	cout << " Building status constructed " << endl;
 }
 
-BldgStat::~BldgStat() 
+BldgStat::~BldgStat()									// Destructor
 {
 	cout << " Building status destructed " << endl;
 }
 
 
-void BldgStat::setPassengerID(int passID) {
+void BldgStat::setPassengerID(int passID) {				// Setter functions updated simultion attributes during sim run
 	passengerID = passID;
 }
 

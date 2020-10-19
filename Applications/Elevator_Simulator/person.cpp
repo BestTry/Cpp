@@ -13,7 +13,7 @@ using std::endl;
 
 int Person::personCount = 0;                                    // Initialize static member personCount (How d0es this work outside the constructor?) 
                                                                 // Must be a global initialization event
-Person::Person(int destFloor)                                   // Constructor - Appears for each person born, 
+Person::Person(int destFloor)                                   // Constructor - Appears for each person generated, 
       : ID(++personCount),                                      // this constructor keeps track of total persons generated
         destinationFloor(destFloor)                             // Variable name destFloor is alternate from floor where person was created
 {
@@ -42,11 +42,11 @@ void Person::stepOntoFloor(Floor& floor)                        // Person walks 
                                                                 // and feeds it the occupantPtr on the floor object
 
     cout << " Person " << ID                                    // After the person appears on the floor, 
-        << " presses floor-button on floor "                    // the person presses the floor-button on floor summoning elevator
-        << floor.getNumber() << endl;
+         << " presses floor-button on floor "                   // the person presses the floor-button on floor summoning elevator
+         << floor.getNumber() << endl;
     floor.floorButton.pressButton();                            // Pressing the floor button summons the elevator       
-                                                                // End function stepOntoFloor
-}                                                               // ----------------------------------------------------
+}                                                               // End function stepOntoFloor       -----------------------------------------
+                                                               
 
 
 void Person::enterElevator(Elevator& elevator, Floor& floor)    // Person enters elevator (Notify floor: leaving floor, entering elevator)
@@ -56,8 +56,8 @@ void Person::enterElevator(Elevator& elevator, Floor& floor)    // Person enters
     cout << " Person " << ID                                    // Press button on elevator
         << " presses elevator button" << endl;
     elevator.elevatorButton.pressButton();                      // Notify elevator to move to other floor
-                                                                // End function enterElevator
-}                                                               // ----------------------------------------------------
+}                                                               // End function enterElevator       -----------------------------------------
+                                                              
 
 
 void Person::exitElevator(                                      // Person exits elevator - called by door class -
@@ -65,6 +65,5 @@ void Person::exitElevator(                                      // Person exits 
 {
     cout << " Person " << ID << " exits the elevator at floor "
          << floor.getNumber() << endl;
-    elevator.passengerExits();                                  // Notify elevator passenger person is exiting elevator  
-
-}                                                               // End function exitElevator
+    elevator.passengerExits();                                  // Notify elevator passenger person is exiting elevator 
+}                                                               // End function exitElevator        ----------------------------------------
