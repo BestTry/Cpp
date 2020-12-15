@@ -1,2 +1,0 @@
-I:\NuZorg\Software\SoftwareDevelopment\C++\Proof_of_Concept\Classes_Structs\Classes\Class_StaticMemWithNew\Debug\Class_StaticMemWithNew.exe
-I:\NuZorg\Software\SoftwareDevelopment\C++\Proof_of_Concept\Classes_Structs\Classes\Class_StaticMemWithNew\Debug\Class_StaticMemWithNew.pdb
