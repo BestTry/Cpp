@@ -67,13 +67,14 @@ int main()									// Function main() begins program execution - Entry point for
 	cout << "                   >>>>>   Elevator Simulation Program   <<<<<      \n\n" << endl;
 
 	int duration;							// Length of simulation in seconds
-
-	cout << " Enter run time: ";			// Request from user how long simulation is to run (Number of steps)
-	cin >> duration;
+											// Request from user how long simulation is to run (Number of steps)
+	cout << " Enter run time (Time-Steps): ";
+	cin >> duration;  
 	cin.ignore();							// Function 'ignore' returns user input but ignoring last 'CR' character
 
 	Building building;						// Create the building object and initialize passenger floor arrival times
-	
+	cout << endl << " Building & components have been constructed - Press 'Enter' to advance 'Time-Steps'" << endl <<endl;
+
 	cout << endl << "			*** ELEVATOR SIMULATION BEGINS ***" << endl << endl;
 	building.runSimulation(duration);		// Run simulation providing building with maximum run time - duration
 	cout << "		*** ELEVATOR SIMULATION ENDS ***" << endl;
@@ -92,7 +93,7 @@ void exitPrgm()
 {
 	cout << "\n\n                  >>>>>>>>>>  Program has Terminated  <<<<<<<<<< " << endl;
 	cout << " \n\n\n " << endl;
-	exit(0);					// Terminate running program from anywhere it is called:
+	exit(0);								// Terminate running program from anywhere it is called:
 }
 
 /*
