@@ -1,9 +1,12 @@
+// ToDo.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+// ToDoStudy.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
 // ToDo.cpp : 
-// todoTasks.cpp : 
 // Description of Program:
 // Code will generate a user input list of tasks.It will have the ability to add, removeand list tasks.Code will use some of the recently assimulated
 // concepts I have been exposed to through either video lessons or tutorials.  As a minimum it will use file reading from and reading to disk file. 
-// The program will store its content in several vectors.  This code also represents a fair example of using the switch statement
+// The program will store its content in  vectors.  This code also represents a fair example of using the switch statement
 // ..........................................................................................
 //
 //
@@ -19,7 +22,6 @@
 #include <vector>		// Support vector operations - See inputDate
 #include <algorithm>	// Copy algorithm - Needed to utilize Standard Template Library functions
 
-#include <limits>		// Contains clasees for defining numerical data type limits on each computer platform
 
 						// The double colons operator '::' is defined as the "Scope Resolution Operator"
 using std::cout;		// Console output
@@ -44,21 +46,20 @@ int main()										// Function main() begins program execution - Entry point fo
 	cout << "            ......................................................         \n\n" << endl;
 
 	int tskNum, index;
-	int priLvl;
-	string tskDefStr;
+	int priLvl;									// Priority level
+	string tskDefStr;							// One line task description
 	vector<int> tskPriVec;						// Vector contains the task priority: Highest to Lowest (1 - 5)
-	vector<string> tskDefVec;					// Vector contains the line descriptions of each task
+	vector<string> tskDefVec;					// Vector - 'Task Definition' contains the line descriptions of each task
 
 
-	string fileName = getFileName();			// Begin by getting the existing or new file name from the user
-	string listTitle;
+	string fileName = getFileName();			// Begin by using the default file name or new file name from the user
 
 	ofstream outputFile;						// Create file output stream object using the 'fstream::ofstream' class for writing to files
 	ifstream inputFile;							// Create file input stream object using the 'fstream::ifstream class' for reading from files
-	
+
 												// First - populate vectors w/historical data, If file non existent prompt user to add data 
 	inputFile.open(fileName);					// Open an input file object having a name contained in variable 'fileName' 
-	if (inputFile) {							// Boolean test is file was opened successfully in previos statement
+	if (inputFile) {							// Boolean test if file was opened successfully in previous statement
 		while ((inputFile >> priLvl) &&         // Assuming boolean test statement will be 'true' as long as there is data in the file to read 
 			(getline(inputFile, tskDefStr)))
 		{										// Once the last item in the input file is read the test becomes false and fpriLvl drops from loop	
@@ -68,11 +69,11 @@ int main()										// Function main() begins program execution - Entry point fo
 		inputFile.close();						// End of data in file must have been reached - Close the file input stream object
 	}
 	else {										// Either the file code not be found or there is no data in the file to be read
-		cout << "\n Unable to open file after very first creation: \n"
-			 << " To correct - Recommend entering an item using the 'a' command.\n" 
-			 << " Next, save item with the 's' command  -  Entering a item first\n" 
-			 << " will allow file access and resolve any future opening issues. "
-			 << " \n" << endl;
+		cout << "\n Following initial file creation, it is void of content: \n"
+			<< " To correct - Recommend entering an item using the 'a' command.\n"
+			<< " Next, save item with the 's' command  -  Entering an item first\n"
+			<< " will allow file access and resolve any future opening issues. "
+			<< " \n" << endl;
 	}											// Adding items to the file will automatically create a new file with the name defined in fileName
 												// User has the option of addig items which will create a file 
 
@@ -125,7 +126,7 @@ int main()										// Function main() begins program execution - Entry point fo
 				tskPriVec.push_back(priLvl);	// Adding priority level values (integer) to end of vector arrays        
 				tskDefVec.push_back(tskDefStr); // Adding task description text (string) to end of vector arrays 
 				command = 'p';					// Finsh command with user command prompt
-				break;                           // Breaks out of switch block - Return to 'while' loop beginning
+				break;                          // Breaks out of switch block - Return to 'while' loop beginning
 			}
 
 		case 'r':
@@ -158,13 +159,14 @@ int main()										// Function main() begins program execution - Entry point fo
 			break;								// Breaks out of switch block - Return to 'while' loop beginning
 
 		case 'p':								// Sollicite command input from user
-			cout << "\n Command: ";               // User Command prompt
+			cout << "\n Command: ";             // User Command prompt
 			cin >> command;						// Breaks out of switch block - Return to 'while' loop beginning
 			break;
 
 		case 'x':
 			cout << " Have your remembered to save your work? \n"
 				<< " If not, hit the 's' key to save your work \n"
+				<< " (Inputs of text are not automatically saved) \n"
 				<< " Otherwise, hit the 'x' key once again to exit\n";
 
 			char keyEntry;
@@ -204,8 +206,8 @@ void exitPrgm()
 
 string getFileName()
 {
-	string listFileName = "todoList";			// Default file name for file holding historical list items
-	cout << " Enter a file name that holds or will hold an item list " << endl;
+	string listFileName = "todo";				// Holds default file name of historical list of tasks
+	cout << " Enter a file name that holds or will hold a list of tasks" << endl;
 	cout << " Enter name here ->>>  Default (todo): ";
 	getline(cin, listFileName);					// Acquire the file name for file I/O interfacing
 	if (listFileName == "todo" || listFileName == "") {
@@ -220,10 +222,10 @@ string getFileName()
 		while (strIndx < strLen) {
 			if (listFileName[strIndx] == ' ') { // Removing the spaces ' ' from the user provided file name
 				strIndx++;						// Advance to checking for spaces in the next element	
-				continue;						// without transferring the character to the vector build
+				continue;						// without transferring the space char to the file name vector build
 			}
 			else {								// Build vector with characters from user provide file name minus spaces
-				flNameVec.push_back(tolower(listFileName[strIndx]));
+				flNameVec.push_back(tolower(listFileName[strIndx])); // File name will be all lower case & without spaces
 				strIndx++;						// Advance vector's element index in preparation for next insertion
 			}
 		}										// Converting the vector 'flNameVec' to string ' strFromVec'
@@ -231,10 +233,9 @@ string getFileName()
 												// Range constructor used - "Techie Delight" - Converting vector of char to string		
 		string strFromVec(flNameVec.begin(), flNameVec.end());
 		listFileName = strFromVec;
-
 	}
 
-	listFileName = listFileName + ".txt";
+	listFileName = listFileName + ".txt";		// Add the 'txt' suffix to the file name
 	cout << " The file \"" << listFileName << "\" will be found in the folder\n"
 		<< " where the software program resides" << endl;
 	return listFileName;
