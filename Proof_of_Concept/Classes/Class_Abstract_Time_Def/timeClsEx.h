@@ -17,7 +17,7 @@ public:									// Constructor and functions of abstract data type class 'Time'
 	void printUniversal();				// Prints universal-time format of time with first instantiation
 	void printStandard();				// Prints standard-time format of time with first instantiation
 
-private:								// Class Imlementation will enforce these restrictions
+private:								// Class Imlementation will enforce these restrictions (Within the *cpp file)
 	int hour;							// 0 - 23 (24-hour clock format)
 	int minute;							// 0 - 59
 	int second;							// 0 - 59

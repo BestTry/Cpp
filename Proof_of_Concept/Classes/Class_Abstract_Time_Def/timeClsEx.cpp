@@ -11,8 +11,8 @@ using std::setw;
 
 
 Time::Time(int hr, int min, int sec)                // Time constructor initializes each data member to zero or client values; See Declaration file
-{                                                   // This ensures all Time objects start in a consistent state
-    setTime(hr, min, sec);                          // Validates acceptable values and sets time
+{                                                   // This ensures all Time objects start in a consistent state 
+    setTime(hr, min, sec);                          // Validates acceptable values and sets time - Accomplished by setTime() function call
 
 }                                                   // End Time constructor
 
@@ -27,9 +27,10 @@ void Time::setTime(int h, int m, int s)             // Set new Time value using 
 
 void Time::printUniversal()                         // Print time in universal format
 {
-    cout << setfill('0') << setw(2) << hour << ":"
-        << setw(2) << minute << ":"
-        << setw(2) << second;
+    cout << setfill('0') << setw(2) 
+         << hour << ":"
+         << setw(2) << minute << ":"
+         << setw(2) << second;
 
 }                                                   // End function printUniversal
 
@@ -37,7 +38,7 @@ void Time::printUniversal()                         // Print time in universal f
 void Time::printStandard()                          // Print Time in standard format
 {
     cout << ((hour == 0 || hour == 12) ? 12 : hour % 12)
-        << ":" << setfill('0') << setw(2) << minute
-        << ":" << setw(2) << second
-        << (hour < 12 ? " AM" : " PM");
+         << ":" << setfill('0') << setw(2) << minute
+         << ":" << setw(2) << second
+         << (hour < 12 ? " AM" : " PM");
 }                                                   // End function printStandard

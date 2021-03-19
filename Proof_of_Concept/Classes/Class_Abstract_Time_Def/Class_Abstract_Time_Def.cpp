@@ -1,8 +1,8 @@
 // Main file: Class_Constr_Init.cpp - Pulled form Deitel, "How to Program" 4th addition, chap 6 - Default Arguments with Constructor.
 //
-// Description of Program .............  Boiler Plate Template  .............................
-// ..........................................................................................
-
+// In this version of the Time class program the header Declaration / Prototype code and the Definition implementation code have been
+// moved to external files.  The compiler invokes them by the usage of the #include statements.
+//
 						// The Preprocessor Directives: (Header Files) 						
 #include "timeClsEx.h"	// include declaration of class Time from timeClExp.h	
 #include <iostream> 	// Standard Template Library class  -  Used for cout, cin, cerr, printf  ( That is the  reason for brackets < > )
@@ -31,14 +31,14 @@ int main()									// Function main() begins program execution - Entry point for
 	cout << "\n\n >>>>>>>>>>>>>>>>>>>>>>>>>>>   Main Code Execution   <<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
 	cout << "            Demonstrating Initializing Constructor with Default Arguments        \n\n" << endl;
 
-
+											// Multiple objects are constructed with none to various optional argugents.
 	Time t1;								// All arguments defaulted to zero as specified in the Time class declaration file: 'time2.h'
 	Time t2(2);								// Minute and second defaulted to zero, hour is specified to '2'
 	Time t3(21, 34);						// Seecond defaulted to zero, hour and minute specified to '21' and '34'
 	Time t4(12, 25, 42);					// All values specified
 	Time t5(27, 74, 99);					// All bad invalied values specified that are unverified by the setTime() function memeber
 
-	cout << " Constructed with:\n\n"
+	cout << " Time constructed with:\n\n"
 		<< " All default arguments:\n  ";
 	t1.printUniversal();					// 00:00:00 Universal format - (No argument were specified)
 	cout << "\n  ";
