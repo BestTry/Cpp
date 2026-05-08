@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\lordb\\Desktop\\Stuff_Things\\Software Development\\Cpp\\Proof_of_Concept\\Classes_Structs\\Classes\\Class_BankAccount_Examples\\BankAccount_ver4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{34A1D61C-58D6-4A3D-AA61-A509B569906B}|BankAccount_ver4.vcxproj|C:\\Users\\lordb\\Desktop\\Stuff_Things\\Software Development\\Cpp\\Proof_of_Concept\\Classes_Structs\\Classes\\Class_BankAccount_Examples\\BankAccount_ver4\\Account.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{34A1D61C-58D6-4A3D-AA61-A509B569906B}|BankAccount_ver4.vcxproj|solutionrelative:Account.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34A1D61C-58D6-4A3D-AA61-A509B569906B}|BankAccount_ver4.vcxproj|C:\\Users\\lordb\\Desktop\\Stuff_Things\\Software Development\\Cpp\\Proof_of_Concept\\Classes_Structs\\Classes\\Class_BankAccount_Examples\\BankAccount_ver4\\BankAccount_ver4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{34A1D61C-58D6-4A3D-AA61-A509B569906B}|BankAccount_ver4.vcxproj|solutionrelative:BankAccount_ver4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Account.h",
+              "DocumentMoniker": "C:\\Users\\lordb\\Desktop\\Stuff_Things\\Software Development\\Cpp\\Proof_of_Concept\\Classes_Structs\\Classes\\Class_BankAccount_Examples\\BankAccount_ver4\\Account.h",
+              "RelativeDocumentMoniker": "Account.h",
+              "ToolTip": "C:\\Users\\lordb\\Desktop\\Stuff_Things\\Software Development\\Cpp\\Proof_of_Concept\\Classes_Structs\\Classes\\Class_BankAccount_Examples\\BankAccount_ver4\\Account.h",
+              "RelativeToolTip": "Account.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-11T15:34:39.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BankAccount_ver4.cpp",
+              "DocumentMoniker": "C:\\Users\\lordb\\Desktop\\Stuff_Things\\Software Development\\Cpp\\Proof_of_Concept\\Classes_Structs\\Classes\\Class_BankAccount_Examples\\BankAccount_ver4\\BankAccount_ver4.cpp",
+              "RelativeDocumentMoniker": "BankAccount_ver4.cpp",
+              "ToolTip": "C:\\Users\\lordb\\Desktop\\Stuff_Things\\Software Development\\Cpp\\Proof_of_Concept\\Classes_Structs\\Classes\\Class_BankAccount_Examples\\BankAccount_ver4\\BankAccount_ver4.cpp",
+              "RelativeToolTip": "BankAccount_ver4.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-11T15:32:25.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
