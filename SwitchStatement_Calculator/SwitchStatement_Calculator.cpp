@@ -1,3 +1,5 @@
+// Switch_Statement_Calculator.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
 // SwitchStatement_Calculator.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 //
@@ -17,14 +19,14 @@ int main()
 	while (run == 'c')					// Check user response to continue calculator execution
 	{
 		cout << " Enter a number, an operator and a number"
-		     << " to run the calulator:" << endl;
-		cin >> num1 >> opRator >> num2;	
+			<< " to run the calulator:" << endl;
+		cin >> num1 >> opRator >> num2;
 												// Any user input automatically converts the entry into a 
 												// double value, because the variables are declared doubles
 												// I was confused with the while statement logic below	
 												// Dispay user input on 'Terminal'	
-												
-		// ***** Need to check for illegal character entry *****
+
+												// ***** Need to check for illegal character entry *****
 
 		cout << " " << num1 << " " << opRator << " " << num2;
 		switch (opRator)
@@ -60,18 +62,18 @@ int main()
 				cout << " Please try again " << endl;
 				break;						// Required to behave correctly 
 			}
-		}												
-		default: {		
-						cout << "\n An non-recognized/illegal operator was entered\n"
-							  << " Please enter a legal characters\n" << endl;
-						break;
-					}
-		break;
+		}
+		default: {
+			cout << "\n An non-recognized/illegal operator was entered\n"
+				<< " Please enter a legal characters\n" << endl;
+			break;
+		}
+				 break;
 		}										// End of 'switch' block
 
 		cout << endl;
 		cout << " Hit the keyboard \" c \" key to continue running the calculator\n"
-		     << " Entering any other key terminates the calculator execution: => " << endl;		
+			<< " Entering any other key terminates the calculator execution: => " << endl;
 		cin >> run;
 	}											// End of 'while' block
 
