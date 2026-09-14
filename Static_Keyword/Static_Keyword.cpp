@@ -13,8 +13,12 @@ When a member variable is declared with the key word static, there will be only 
 of the number of instances of the class that might exist.  A single copy of a class's static member variable is shared by all instances 
 of the class.  Text copied from texbook "C++ From Control Structures Through Objects" - Tony Gaddis
 
+Local variables that are declared statitc retains it value when the function that called it returns to the calling function the value 
+it had when the function last completed its execution;  All static local variable variables are initialize to zero by default
 
-
+Likewise an identifier declared outsite any function or class has gloabal namespace scope.  Such an identifier is known to all functions 
+from the point at which it is declred until the end of the file. Global variables are creatged by placing variable declarations outside 
+any class or function definition.  Such variables retain their values throughout a program's execution.
 
 
 In the C++ programming language, the keyword static modifies the lifetime, visibility (linkage), or 
@@ -55,6 +59,8 @@ using std::endl;
 using std::format;
 using std::string;
 
+int globalvar;				// Global variable declared outside any class or function
+
 void countCalls() {
     static int counter = 0; // Initialized only once
     counter++;
@@ -77,7 +83,12 @@ public:
 
 int main()
 {
-   countCalls(); // Output: Called 1 times
+	
+	globalVar{99};
+	cout << format(" Initial global variable's value: {}\n", globalVar++);
+	cout << format(" Current global variable's value: {}\n", globalVar);
+	
+,   countCalls(); // Output: Called 1 times
     countCalls(); // Output: Called 2 times
   
   int Car::totalCars = 0; // Definition and initialization outside the class
