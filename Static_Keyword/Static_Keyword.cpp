@@ -13,10 +13,10 @@ When a member variable is declared with the key word static, there will be only 
 of the number of instances of the class that might exist.  A single copy of a class's static member variable is shared by all instances 
 of the class.  Text copied from texbook "C++ From Control Structures Through Objects" - Tony Gaddis
 
-
-
-
-
+The static keyword is used in many programming languages to specify a local variable to have a lifetime of the whole program, 
+preserved between function invocations, instead of having its own copy for each function invocation as in automatic storage duration, 
+inherited from the usage in C.
+.........................................................................................................................................
 In the C++ programming language, the keyword static modifies the lifetime, visibility (linkage), or 
 class association of a variable or function. Its exact meaning depends entirely on where it is declared 
 in your code.The behavior of static can be broken down into four main use cases:
