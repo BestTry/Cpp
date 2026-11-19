@@ -1,11 +1,12 @@
-// WriteDataToFile - File_Operations - Writing data to a file. Code functionality lifted from 
+// FileOps_WriteData - File_Operations - Writing data to a file. Code functionality lifted from 
 // program 12-1 of textbook C++ "From Control Structures Through Objects" by author 'Tont Gaddis'
 //
 // 
 // 					//      *** Preprocessor Directives ***
 //                  // Directive #include causes another file to be included
 #include <iostream>	// Account for input-output stream library functions
-#include <format>
+#inclusw <iomanip>	// Provides stream manipulators to control formatting of input and output
+#include <format>   // Used for displaying text with format syntax
 #include <ifstream>	// Input File Stream used only to read data from files into memory
 #include <ofstream> // Output File Stream used to create files and write data to them
 #include <fstream>	// Used create files, read and write data to them - Requires 2 arguments
@@ -28,6 +29,10 @@
 	open the file for input (ios::in) [ dataFile.open("fileName.txt", ios::in]. If the 
 	file doesnot exist the open operation will fail. In this case create the file by 
 	opening it for output > Create the file [dataFile.open("fileName.txt:, ios::out);]
+	
+	File stream objects may be passed to functions, but only by its reference. Use the 
+	syntax reference '&" before the object name.within the function parameter list.
+	The code below using an file stream object is passed by referece to the function
 	*/
 //					
 using std::format;	// Option: Could have used general: 'using namespace std;'
@@ -40,6 +45,11 @@ using std::endl;	// Scope resolution operator < :: > is used to explicitly
 					// dentifier exists in multiple scopes, and it can also
 					// be used to access members without creating an object.
 //
+//                     ***** Function Declarations / Prototypes *****
+//
+	bool openFile(fstream &, string); 			// Included for stream object reference passing
+	void showFileContents(fstream &);			// See code below for function definitions
+//	
 int main()
 {
 	fstream dataFile;							// Create a File Stream object - "dataFile"
@@ -82,8 +92,8 @@ int main()
 	dataFile.open(("numfile", ios::out);			// Open a file file in output mode
 	dataFile << fixed;								// Format for fixed-point notation
 	dataFile << nmm << endl;
-	dataFile << setprecision(4);
-	dataFile << nmm << endl;
+	dataFile << setprecision(4);					// The #include <iomanip> above is required 
+	dataFile << nmm << endl;						// to implement the setprecision function
 	dataFile << setprecision(3);
 	dataFile << nmm << endl;
 	dataFile << setprecision(1;
@@ -91,11 +101,70 @@ int main()
 	dataFile << setprecision(1);
 	dataFile << nmm << endl;
 	dataFile.close();
+	cout << endl;
+//													// Code demo of writing data to a file:
+													// Declare and define table
+	const int rows =3;								// Rows to write
+	const int cols = 3;								// Cols to write
+	int numTbl[rows][cols] = 	
+	{ 
+		897, 5, 837,
+		34, 7, 1623,
+		390, 3456, 12
+	}; 
+	// ????? Why Did not have to use syntax [  fstream outfile  ]  ???????
+	fstream outFile("numTble", ios::out);			// Create a File Stream object - "outFile" and name the file
+													// Write three rows of numbera in a field of 8 character spaces
+	for (int row = 0; row < rows; row++) {			// The "setw(8) functions sets width of output field
+		for (int col = 0; col < cols; col++)		// The #include <iomanip> is required for setw(), setfill() functions
+			outFile << setfill('-') << setw{8) << numTbl[row][col];
+		}		
+	outFile.close();
+	cout << " Done writing data to a 3 x 3 row / column table" ]\n;
+	cout << endl;
+//													// Demo how file stream objects may be passed by reference to functions
+//
+	fstream dataFile;
 	
+	if (openFileIn(dataFile,"demofile.txt")) {
+		cout << format(" The 'dataFile' {} opened successfully\n", "demofile.txt");
+		cout << format(" Presently reading data from the {} file\n", "demofile.txt");
+		showContents(dataFile);
+		cout << " Completed code demo: Calling a function by passing a file stream object\n");
+	e
 	
    	cout << " \t\t  ***  Goodbye!  *** \n\n";
 	cout << endl << endl << endl;
 	system("pause>0");
 	return 0;
-}
-+
+}													// End of 'main' function
+//
+//                     						***** Function Definitions *****
+//															
+/*
+	Function: 'openFileIn' Accepts a reference to an fstream object as an argument. The file is opened for input. 
+	The file is opened for input. The function returns true upon success. False upon failure.
+
+	Function: 'showContents' Accents an fstream reference as its argument. Uses a loop to readeach name from the 
+	file and and displays it onthe screen.	
+*/
+	bool openFile(fstream &, string fileName) {
+	file.open(fileNmae, ios::in);
+		if (file.fail()) {
+			cout " File failed to open\n";
+			return false;
+		}
+	else {
+			cout << "File opened successfully\n";
+			return true;
+		}
+	}
+//
+	void showFileContents(fstream & file) {
+		string line;
+		while (file >> line) {
+			cout >> line;	
+			cout << line << endl;
+		}
+	}
+		
